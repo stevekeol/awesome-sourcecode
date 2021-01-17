@@ -149,6 +149,7 @@ export default function createStore(reducer, preloadedState, enhancer) {
 
   /**
    * @Desc 浅拷贝currentListeners，防止在dispatch过程中调用subscribe/unsubscribe出现bug
+   *       这样，每次执行监听队列中的函数前，currentListeners始终是上一次执行dispatch()时的nextListeners
    */
   function ensureCanMutateNextListeners() {
     if(nextListeners === currentListeners) {
@@ -178,3 +179,12 @@ export default function createStore(reducer, preloadedState, enhancer) {
 
   return store;
 }
+
+
+  /*-----------How to use------------*/
+
+/**
+ * subscribe()的使用
+ */
+const unsubscribe1 = store.subscribe(() => console.log(store.getState()));
+unsubscribe1();
