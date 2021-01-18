@@ -3,4 +3,4 @@
 
 ## List
 
-- [Redux](): 
+- [Redux](): Javascript应用的状态管理器
